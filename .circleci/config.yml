@@ -49,14 +49,7 @@ jobs:
       - run:
           name: "Prepare Android"
           command: npx tns prepare android
-      - run:
-          name: "Build iOS"
-          command: |
-            ./scripts/build_ios.sh org.nativescript.circleciint
-      - run:
-          name: "Build Android"
-          command: |
-            ./scripts/build_android.sh
+      
       - persist_to_workspace:
           root: ~/circleci
           paths:
@@ -107,11 +100,3 @@ workflows:
       - test-unit:
           requires:
             - build
-      - test-e2e:
-          requires:
-            - build
-      - deploy:
-          requires:
-            - build
-            - test-unit
-            - test-e2e
