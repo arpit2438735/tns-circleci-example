@@ -49,6 +49,10 @@ jobs:
       - run:
           name: "Prepare Android"
           command: npx tns prepare android
+      - run:	+      
+          name: "Build iOS"	
+          command: |	
+            ./scripts/build_ios.sh org.nativescript.circleciint    
       
       - persist_to_workspace:
           root: ~/circleci
